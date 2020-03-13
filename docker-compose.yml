@@ -10,7 +10,7 @@ services:
       - MYSQL_ROOT_PASSWORD=coogs
     # ports:
     #   - "3306:3306"
-    # To persist MySQL data
+    ## To persist MySQL data
     # volumes:
     #   - ./mysql/data:/var/lib/mysql
     #   - ./mysql/my.cnf:/etc/mysql/my.cnf
@@ -40,11 +40,12 @@ services:
       - "8888:8888"
     user: 1000:anaconda
     volumes:
+      ## System config
       - ./apk_requirements.txt:/apk_requirements.txt
       - ./pip_requirements.txt:/pip_requirements.txt
-      - ./conda_requirements.txt:/conda_requirements.txt
+      # - ./conda_requirements.txt:/conda_requirements.txt
       # - /tmp/.X11-unix:/tmp/.X11-unix:rw
-      # Additional mounted notebooks may go here
+      ## Additional mounted notebooks may go here
       - ./notebook:/home/dja/notebooks
 networks:
   main:
