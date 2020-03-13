@@ -16,8 +16,8 @@ services:
     #   - ./mysql/my.cnf:/etc/mysql/my.cnf
   app:
     <<: *net
-    build:
-      context: .
+    # build:
+    #   context: .
     image: raphaelguzman/uh_demo:0.0.0
     depends_on:
       db:
@@ -43,7 +43,7 @@ services:
       - ./apk_requirements.txt:/apk_requirements.txt
       - ./pip_requirements.txt:/pip_requirements.txt
       - ./conda_requirements.txt:/conda_requirements.txt
-      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      # - /tmp/.X11-unix:/tmp/.X11-unix:rw
       # Additional mounted notebooks may go here
       - ./notebook:/home/dja/notebooks
 networks:
