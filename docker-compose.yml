@@ -29,7 +29,7 @@ services:
       - PYTHON_USER=dja
       - JUPYTER_PASSWORD=coogs
       - DISPLAY
-    working_dir: /home/dja
+    working_dir: /home/dja/notebooks
     command: >
       /bin/sh -c
        "
@@ -46,33 +46,5 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       # Additional mounted notebooks may go here
       - ./notebook:/home/dja/notebooks
-      - ../dj-python-101/ch1:/home/dja/tutorials
 networks:
   main:
-# pip install --user imutils
-# conda install -c conda-forge opencv=4.2.0
-# apk add mesa-gl
-
-# QT_QPA_PLATFORM_PLUGIN_PATH=/opt/conda/pkgs/qt-5.9.7-h52cfd70_2/plugins python neural_style_transfer.py --image images/giraffe.jpg --model models/eccv16/the_wave.t7
-# QT_QPA_PLATFORM_PLUGIN_PATH=/opt/conda/plugins python neural_style_transfer.py --image images/giraffe.jpg --model models/eccv16/the_wave.t7
-# QT_QPA_PLATFORM_PLUGIN_PATH=/usr/lib python neural_style_transfer.py --image images/giraffe.jpg --model models/eccv16/the_wave.t7
-# QT_QPA_PLATFORM_PLUGIN_PATH=/opt/conda/include python neural_style_transfer.py --image images/giraffe.jpg --model models/eccv16/the_wave.t7
-# QT_QPA_PLATFORM_PLUGIN_PATH=/opt/conda/pkgs python neural_style_transfer.py --image images/giraffe.jpg --model models/eccv16/the_wave.t7
-# QT_QPA_PLATFORM_PLUGIN_PATH=/opt/conda/lib python neural_style_transfer.py --image images/giraffe.jpg --model models/eccv16/the_wave.t7
-# QT_QPA_PLATFORM_PLUGIN_PATH=/opt/conda/lib/pkgconfig python neural_style_transfer.py --image images/giraffe.jpg --model models/eccv16/the_wave.t7
-
-# export QT_DEBUG_PLUGINS=1
-# export LD_LIBRARY_PATH=/opt/conda/pkgs/qt-5.9.7-h52cfd70_2/plugins/platforms:$LD_LIBRARY_PATH
-# export LD_LIBRARY_PATH=/opt/conda/plugins/platforms:$LD_LIBRARY_PATH
-
-# export QT_DEBUG_PLUGINS=1
-# env LANG=C ldd /opt/conda/plugins/platforms/libqxcb.so
-
-# pip install --user Pillow
-
-# /opt/conda/plugins/platforms # find / -name "*libqxcb.so*"
-# /opt/conda/pkgs/qt-5.9.7-h52cfd70_2/plugins/platforms/libqxcb.so
-# /opt/conda/plugins/platforms/libqxcb.so
-# /opt/conda/plugins/platforms # ln -sf /opt/conda/pkgs/qt-5.9.7-h52cfd70_2/plugins/platforms/ /usr/bin/
-
-# apk add libselinux
