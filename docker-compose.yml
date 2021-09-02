@@ -1,3 +1,4 @@
+# docker-compose up --build
 version: '2.4'
 x-net: &net
   networks:
@@ -16,8 +17,8 @@ services:
     #   - ./mysql/my.cnf:/etc/mysql/my.cnf
   app:
     <<: *net
-    # build:
-    #   context: .
+    build:
+      context: .
     image: raphaelguzman/uh_demo:0.0.0
     depends_on:
       db:
@@ -27,7 +28,8 @@ services:
       - DJ_USER=root
       - DJ_PASS=coogs
       - PYTHON_USER=dja
-      - JUPYTER_PASSWORD=coogs
+      - Djlab_JupyterNotebook_DisplayFilepath=/home/dja/notebooks/DataJoint_Intro.ipynb
+      - Djlab_JupyterNotebook_Password=coogs
       - DISPLAY
     working_dir: /home/dja/notebooks
     command: >
@@ -41,9 +43,9 @@ services:
     user: 1000:anaconda
     volumes:
       ## System config
-      - ./apk_requirements.txt:/apk_requirements.txt
-      - ./pip_requirements.txt:/pip_requirements.txt
-      # - ./conda_requirements.txt:/conda_requirements.txt
+      - ./apk_requirements.txt:/tmp/apk_requirements.txt
+      - ./pip_requirements.txt:/tmp/pip_requirements.txt
+      # - ./conda_requirements.txt:/tmp/conda_requirements.txt
       # - /tmp/.X11-unix:/tmp/.X11-unix:rw
       ## Additional mounted notebooks may go here
       - ./notebook:/home/dja/notebooks
