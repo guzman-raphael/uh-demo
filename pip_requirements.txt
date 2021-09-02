@@ -1,3 +1,4 @@
 Pillow
 datajoint
 beautifulsoup4
+imutils

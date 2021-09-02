@@ -1,1 +1,2 @@
-datajoint
+qt=5.12.5
+opencv=4.2.0
