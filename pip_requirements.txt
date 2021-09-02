@@ -1,1 +1,3 @@
 Pillow
+datajoint
+beautifulsoup4
