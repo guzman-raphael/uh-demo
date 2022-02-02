@@ -1,8 +1,9 @@
 # docker-compose up --build
 version: '2.4'
-x-net: &net
+x-net:
+  &net
   networks:
-      - main
+    - main
 services:
   db:
     <<: *net
@@ -17,9 +18,8 @@ services:
     #   - ./mysql/my.cnf:/etc/mysql/my.cnf
   app:
     <<: *net
-    build:
-      context: .
-    image: raphaelguzman/uh_demo:0.0.0
+    # build: .
+    image: raphaelguzman/uh_demo:0.0.1
     depends_on:
       db:
         condition: service_healthy
@@ -27,27 +27,20 @@ services:
       - DJ_HOST=db
       - DJ_USER=root
       - DJ_PASS=coogs
-      - PYTHON_USER=dja
-      - Djlab_JupyterNotebook_DisplayFilepath=/home/dja/notebooks/DataJoint_Intro.ipynb
-      - Djlab_JupyterNotebook_Password=coogs
+      - Djlab_JupyterServer_DisplayFilepath=/home/anaconda/notebooks/DataJoint_Intro.ipynb
+      - Djlab_JupyterServer_Password=coogs
+      - Djlab_JupyterServer_SaveOutput=TRUE
       - DISPLAY
-    working_dir: /home/dja/notebooks
-    command: >
-      /bin/sh -c
-       "
-        # conda install -yc conda-forge datajoint;
-        jupyter lab;
-       "
+    working_dir: /home/anaconda/notebooks
     ports:
       - "8888:8888"
     user: 1000:anaconda
     volumes:
       ## System config
-      - ./apk_requirements.txt:/tmp/apk_requirements.txt
-      - ./pip_requirements.txt:/tmp/pip_requirements.txt
-      # - ./conda_requirements.txt:/tmp/conda_requirements.txt
-      # - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
       ## Additional mounted notebooks may go here
-      - ./notebook:/home/dja/notebooks
+      - ./notebook:/home/anaconda/notebooks
+      - ./djlab_config.yaml:/tmp/djlab_config.yaml
+      - ./jupyter_server_config.py:/etc/jupyter/jupyter_server_config.py
 networks:
   main:

@@ -1,3 +1,7 @@
-Pillow
 datajoint
 beautifulsoup4
+opencv-python-headless
+imutils
+matplotlib
+Pillow
+numpy
