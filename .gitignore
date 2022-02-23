@@ -1,2 +1,3 @@
-notebook/cached
+*.jpg
 notebook/.ipynb_checkpoints
+minio

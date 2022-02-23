@@ -1,3 +1,0 @@
-git
-mysql-client
-curl
