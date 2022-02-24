@@ -2,4 +2,4 @@ djlab:
   jupyter_server:
     display_filepath: '/home/anaconda/notebooks/DataJoint_Intro.ipynb'
     password: 'coogs'
-    save_output: 'TRUE'
+    save_output: 'FALSE'
