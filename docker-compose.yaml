@@ -9,7 +9,7 @@ services:
     <<: *net
     image: datajoint/mysql:5.7
     environment:
-      - MYSQL_ROOT_PASSWORD=coogs
+      - MYSQL_ROOT_PASSWORD=datajoint
     # ports:
     #   - "3306:3306"
     ## To persist MySQL data
@@ -26,9 +26,9 @@ services:
     environment:
       - DJ_HOST=db
       - DJ_USER=root
-      - DJ_PASS=coogs
+      - DJ_PASS=datajoint
       - Djlab_JupyterServer_DisplayFilepath=/home/anaconda/notebooks/DataJoint_Intro.ipynb
-      - Djlab_JupyterServer_Password=coogs
+      - Djlab_JupyterServer_Password=datajoint
       # - Djlab_JupyterServer_SaveOutput=TRUE
       - DISPLAY
     working_dir: /home/anaconda/notebooks
