@@ -1,5 +1,0 @@
-djlab:
-  jupyter_server:
-    display_filepath: '/home/anaconda/notebooks/DataJoint_Intro.ipynb'
-    password: 'datajoint'
-    save_output: 'FALSE'

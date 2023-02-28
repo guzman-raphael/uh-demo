@@ -1,46 +1,14 @@
-# docker-compose up --build
-version: '2.4'
-x-net:
-  &net
-  networks:
-    - main
+# MYSQL_VER=8.0 docker compose up --build
+version: "2.4"
 services:
   db:
-    <<: *net
-    image: datajoint/mysql:5.7
+    restart: always
+    image: datajoint/mysql:${MYSQL_VER}
     environment:
-      - MYSQL_ROOT_PASSWORD=datajoint
-    # ports:
-    #   - "3306:3306"
-    ## To persist MySQL data
+      - MYSQL_ROOT_PASSWORD=${DJ_PASS}
+    ports:
+      - "3306:3306"
+    ## To persist MySQL data and config
     # volumes:
     #   - ./mysql/data:/var/lib/mysql
     #   - ./mysql/my.cnf:/etc/mysql/my.cnf
-  app:
-    <<: *net
-    build: .
-    image: raphaelguzman/uh_demo:0.0.1
-    depends_on:
-      db:
-        condition: service_healthy
-    environment:
-      - DJ_HOST=db
-      - DJ_USER=root
-      - DJ_PASS=datajoint
-      - Djlab_JupyterServer_DisplayFilepath=/home/anaconda/notebooks/DataJoint_Intro.ipynb
-      - Djlab_JupyterServer_Password=datajoint
-      # - Djlab_JupyterServer_SaveOutput=TRUE
-      - DISPLAY
-    working_dir: /home/anaconda/notebooks
-    ports:
-      - "8888:8888"
-    user: 1000:anaconda
-    volumes:
-      ## System config
-      - /tmp/.X11-unix:/tmp/.X11-unix:rw
-      ## Additional mounted notebooks may go here
-      - ./notebook:/home/anaconda/notebooks
-      - ./djlab_config.yaml:/tmp/djlab_config.yaml
-      - ./jupyter_server_config.py:/etc/jupyter/jupyter_server_config.py
-networks:
-  main:
