@@ -17,6 +17,7 @@
 	},
 	"onCreateCommand": "MYSQL_VER=8.0 docker compose down && docker volume prune -f && MYSQL_VER=8.0 docker compose up --build --wait",
 	"forwardPorts": [
+		3000,
 		3306
 	],
 	"customizations": {

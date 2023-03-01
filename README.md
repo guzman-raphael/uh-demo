@@ -5,3 +5,8 @@ A demo on how to set up a DataJoint Pipeline based on news articles from Univers
 # Sources
 
 - Adrian Rosebook, https://www.pyimagesearch.com/2018/08/27/neural-style-transfer-with-opencv/
+
+
+# dagster
+
+asset -> DJ table value
